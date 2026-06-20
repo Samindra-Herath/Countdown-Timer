@@ -38,9 +38,8 @@ export default function App() {
     const encoded = btoa(unescape(encodeURIComponent(minified)));
     
     // Dynamic Origin Detection: construct public sharing URL without hardcoding
-    const origin = window.location.origin;
-    const pathname = window.location.pathname;
-    const url = `${origin}${pathname}?config=${encodeURIComponent(encoded)}`;
+    const productionUrl = window.location.origin + window.location.pathname;
+    const url = `${productionUrl}?config=${encodeURIComponent(encoded)}`;
     
     // Copy to clipboard with robust fallback
     if (navigator.clipboard && navigator.clipboard.writeText) {
